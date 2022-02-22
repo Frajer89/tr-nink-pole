@@ -28,18 +28,42 @@ namespace trénink_pole
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Generujpole(pole, 1, 1000);
+            Generujpole(pole, -999, 1000);
             txtText.Text = string.Join(";", pole);
+            txtText.Text += "\r\n\r\n";
+            txtText.Text += $"Součet" ={SoucetPrvkuPoli(pole)}"
         }
 
         private void Generujpole(int[] array, int min, int max)
         {
             Random random = new Random();
-            for(int i = 0; i < array.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 array[i] = random.Next(min, max);
             }
+
         }
 
+        private int[] Generujpole(int count, int min, int max)
+        {
+            int[] Array = new int[count];
+            Random random = new Random();
+            for (int i = 0; i < Array.Length; i++)
+            {
+                Array[i] = random.Next(min, max);
+            }
+            return Array;
+        }
+
+        private int SoucetPrvkuPoli(int[] Array)
+        {
+            int soucet = 0;
+            for(int i = 0;i <Array.Length; i++)
+            {
+                soucet = soucet + Array[i];
+                     
+            }
+            return soucet;
+        }
     }
 }
